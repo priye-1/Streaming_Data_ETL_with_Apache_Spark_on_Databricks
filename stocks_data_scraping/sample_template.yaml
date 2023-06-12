@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  stocks-data-scraping
+
+  Sample SAM Template for stocks_data_scraping
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+    MemorySize: 128
+
+Resources:
+  ScraperFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      Role: arn:aws:iam::313447310078:role/lambda-s3-role
+      CodeUri: scraper/
+      Handler: app.stock_scraper_handler
+      Runtime: python3.8
+      Architectures:
+      - x86_64
+      Events:
+        ScraperFunctionSchedule:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 hour)
+            Enabled: false
+      Environment:
+        Variables: 
+          AWS_ACCESS: <aws access key>
+          AWS_SECRET: <aws secret key>
+      Timeout: 500
+      MemorySize: 1000

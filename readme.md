@@ -1,5 +1,5 @@
 # Streaming Data with Apache Spark on Databricks 
-This repository provides examples and code snippets for streaming data processing using Apache Spark on Databricks with AWS services. It demonstrates how to leverage the power of Spark streaming to process and analyze real-time data in a distributed and scalable manner, utilizing various AWS services for data ingestion and storage.<br>
+This repository provides examples and code snippets for streaming data processing using Apache Spark on Databricks with AWS services. It demonstrates how to leverage the power of Spark Structured streaming API to process and analyze real-time data in a distributed and scalable manner, utilizing various AWS services for data ingestion and storage.<br>
 
 ### Technologies used
 - <b>Databricks</b> : Databricks is a unified set of tools for building, deploying, sharing, and maintaining enterprise-grade data solutions at scale. For this project it was used to access its Delta lake, Apache spark, and Structured streaming technology.<br><br>

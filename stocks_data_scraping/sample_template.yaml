@@ -15,7 +15,7 @@ Resources:
   ScraperFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      Role: arn:aws:iam::313447310078:role/lambda-s3-role
+      Role: <arn from created role>
       CodeUri: scraper/
       Handler: app.stock_scraper_handler
       Runtime: python3.8

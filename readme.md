@@ -1,4 +1,4 @@
-#Streaming Data with Apache Spark on Databricks 
+# Streaming Data with Apache Spark on Databricks 
 This repository provides examples and code snippets for streaming data processing using Apache Spark on Databricks with AWS services. It demonstrates how to leverage the power of Spark streaming to process and analyze real-time data in a distributed and scalable manner, utilizing various AWS services for data ingestion and storage.<br>
 
 ### Technologies used
@@ -26,29 +26,29 @@ The website does not provide a public API, hence it was reverse engineered to ge
 
 
 ### Development Process
-2. Installed AWS SAM and created Lambda function using SAM Template. Sample template used can be found <a href="">here</a><br>
-<img src='readme_images/lambda_function.png'><br><br>
+1. Installed AWS SAM and created Lambda function using SAM Template. Sample template used can be found <a href="https://github.com/priye-1/Streaming_Data_ETL_with_Apache_Spark_on_Databricks/blob/master/stocks_data_scraping/sample_template.yaml">here</a><br>
+<img src='readme_images/lamda_function.png'><br><br>
     
-4. Created S3 Bucket and IAM role to enable access to s3 from AWS Lambda, also created new user to access AWS key and secret key <br>
+2. Created S3 Bucket and IAM role to enable access to s3 from AWS Lambda, also created new user to access AWS key and secret key <br>
 <img src='readme_images/bucket.png'><br><br>
 
-1. Created Databricks account from AWS market place and set up spark streaming jobs on notebook. This job will continously load data from S3 onto Databricks File System (DBFS) and then autoloader loads the data from DBFS into Delta lakes for spark processing. Notebook can be found <a href="">here</a>. <br>
+3. Created Databricks account from AWS market place and set up spark streaming jobs on notebook. This job will continously load data from S3 onto Databricks File System (DBFS) and then autoloader loads the data from DBFS into Delta lakes for spark processing. Notebook can be found <a href="https://github.com/priye-1/Streaming_Data_ETL_with_Apache_Spark_on_Databricks/blob/master/spark_stream_job.ipynb">here</a>. <br>
 <img src='readme_images/databricks.png'><br><br>
 
-1. Created EC2 Instance (Linux2 AMI) with at least 2gb RAM to host MongoDB and allowed access to mongo port <br>
+4. Created EC2 Instance (Linux2 AMI) with at least 2gb RAM to host MongoDB and allowed access to mongo port <br>
 <img src='readme_images/instance.png'><br><br>
 
-5. Set up containerized mongodb on server to receive spark streams. The streams are loaded directly into Mongodb and can be visualized using Mongodb Compass commands can be found <a href="">here</a>.
+5. Set up containerized mongodb on server to receive spark streams. The streams are loaded directly into Mongodb and can be visualized using Mongodb Compass. Set up commands can be found <a href="https://github.com/priye-1/Streaming_Data_ETL_with_Apache_Spark_on_Databricks/blob/master/commands.sh">here</a>.
 <img src='readme_images/mongodb.png'><br><br>
 
 #### Pipeline Flow
 Triggers Lambda function -> scrapes data from API -> loads data into s3 -> Mounts data from S3 into DBFS and then into Delta lake ->  Reads Stream from Delta lake and processes stream -> Loads stream into Mongo DB<br><br>
 
 #### Necessary Files
-1. Linux commands for Mongodb and container setup can be found <a href="">here</a>
-2. notebook can be found  <a href="">here</a> This should run in your environment if set up correctly
-3. Lambda application to scrape data can be found here <a href="">here</a>
-4. SQL commands to set up database can be found <a href="">here</a>
+1. Linux commands for Mongodb and container setup can be found <a href="https://github.com/priye-1/Streaming_Data_ETL_with_Apache_Spark_on_Databricks/blob/master/commands.sh">here</a>
+2. Notebook can be found  <a href="https://github.com/priye-1/Streaming_Data_ETL_with_Apache_Spark_on_Databricks/blob/master/spark_stream_job.ipynb">here</a> This should run in your environment if set up correctly
+3. Lambda application to scrape data can be found here <a href="https://github.com/priye-1/Streaming_Data_ETL_with_Apache_Spark_on_Databricks/tree/master/stocks_data_scraping">here</a>
+4. SQL commands to set up database can be found <a href="https://github.com/priye-1/Streaming_Data_ETL_with_Apache_Spark_on_Databricks/blob/master/commands.sql">here</a>
 
 ### References
 <li><a href="https://docs.databricks.com/ingestion/auto-loader/index.html">Databricks Autoloader</a></li>

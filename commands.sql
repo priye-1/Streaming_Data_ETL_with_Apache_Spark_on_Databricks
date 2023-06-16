@@ -18,19 +18,19 @@ use stocks_DB
 -- create collection
 db.createCollection("stocks")
 
--- insert document into collection
-db.stocks.insertOne({
-    car: "ford",
-    price: 15500,
-    body:  "crossover",
-    mileage: 68,
-    engV: 2.5,
-    engType: "Gas",
-    registration: "yes",
-    year: 2010,
-    model: "kuga",
-    drive: "full",
-})
+-- sample insert document command into collection
+-- db.stocks.insertOne({
+--     car: "ford",
+--     price: 15500,
+--     body:  "crossover",
+--     mileage: 68,
+--     engV: 2.5,
+--     engType: "Gas",
+--     registration: "yes",
+--     year: 2010,
+--     model: "kuga",
+--     drive: "full",
+-- })
 
 -- print from table
 db.COLLECTION_NAME.find()
